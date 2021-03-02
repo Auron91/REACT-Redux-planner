@@ -1,0 +1,182 @@
+@import './variables';
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+p {
+    margin: 0;
+    padding: 0;
+}
+#root {
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0rem auto;
+    max-width: 30rem;
+}
+
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 1rem auto 1rem auto;
+    padding: 1rem;
+    z-index: 100;
+    &__brand {
+        text-decoration: none;
+        font-size: 1.5rem;
+    }
+}
+
+.task-list {
+    flex-grow: 1;
+    svg{
+        margin-right: 0.5em;
+    }
+    &__header {
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 1rem;
+    }
+}
+
+.task {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5rem 1rem;
+    border-top: 1px solid rgba(0,0,0,.1);
+    transition: transform .5s ease-out;
+    &:hover {
+        transform: scale(1.03);
+    }
+    &__body {
+        display: flex;
+        align-items: center;
+        justify-content:flex-start;
+        flex-grow: 1;
+        padding: 1rem;
+    }
+    &__complete {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+    }
+
+    &__icons {
+        justify-self: flex-end;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        &--delete {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            fill: #FF3263;
+            transition: transform .5s ease-out;
+            margin-left: 1rem;
+        }
+        &--edit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            fill: #17D778;
+            z-index: 50;
+        }
+    }
+}
+.edit-modal {
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: white;
+    padding: 1rem;
+    z-index: 150;
+    border: 1px solid black;
+    border-radius: 4px;
+    form {
+        input {
+            padding: 0.5rem 0;
+            margin: 1rem 0;
+            border: 2px solid black;
+            border-radius: 4px;
+            font-size: 1.25rem;
+        }
+    }
+    &__buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1rem;
+        button {
+            font-size: 1.25rem;
+        }
+    }
+}
+.backdrop {
+    // display: none;
+    position: fixed;
+    opacity: 1;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.2s linear;
+  }
+
+.add-task {
+    width: 100%;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    &__input {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        margin: 0.25rem auto;
+        input {
+            font-size: 1.25rem;
+            width: 100%;
+            padding: 0.5rem;
+            border: 2px solid black;
+            border-radius: 4px;
+        }
+    }
+    &__icon {
+        width: 2rem;
+    }
+}
+
+@media (min-width: $layout-brakpoint-small) {
+    .container {
+        max-width: 40rem;
+        border-radius: 1rem;
+        margin-top: 3rem;
+        box-shadow: 2px 2px 5px;
+    }
+}
